@@ -1,7 +1,0 @@
-class MyAdapter(BestMatch):
-    def __init__(self, chatbot, **kwargs):
-        super().__init__(chatbot, **kwargs)
-        self.categories = {
-            'powitania' : 'powitania'
-        }
-        self.key_words = self.categories.keys()

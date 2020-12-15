@@ -10,7 +10,7 @@ quit_list = ["zegnaj", "wylacz", "zakoncz", "papa"]
 category_ask_list = ["jakie", "pokaz", "co"]
 category_select_list = ["z"]
 next_list = ["nastepny", "kolejny", "dalej", "next", "jeszcze"]
-prev_list = ["wczesniejszy", "poprzedni", "prev", "previous", "wroc"]
+prev_list = ["wczesniej", "poprzedni", "prev", "previous", "wroc"]
 take_list = ["biore", "ok", "zamawiam", "chce"]
 end_list = ["nie kupuje", "rezygnuje", "odechcialo", "nie chce", "dosc", "wystarczy"]
 
@@ -21,15 +21,15 @@ final_response = [
 ]
 
 next_prod_list = [
-    "Oto kolejny produkt:",
-    "Nastepny produkt:",
-    "Kolejna pozycja:"
+    "Oto kolejny produkt",
+    "Nastepny produkt",
+    "Kolejna pozycja"
 ]
 
 prev_prod_list = [
-    "Oto poprzedni produkt:",
-    "Poprzedni produkt:",
-    "Wczesniejsza pozycja:"
+    "Oto poprzedni produkt",
+    "Poprzedni produkt",
+    "Wczesniejsza pozycja"
 ]
 
 thanks_reply_list = [
@@ -133,7 +133,10 @@ class AllegroAdapter(BestMatch):
         return self.product_list[self.product_iterator]
 
     def find_product_on_allegro(self):     
-        count = self.api.search_prod(self.search_prod, self.categories[self.search_category])
+        if self.search_category:
+            count = self.api.search_prod(self.search_prod, self.categories[self.search_category])
+        else:
+            count = self.api.search_prod(self.search_prod)
         return count
 
     def get_curr_prod(self):
